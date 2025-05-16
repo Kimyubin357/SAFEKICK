@@ -1,0 +1,78 @@
+import React from 'react';
+
+function RealTimeDetection({ detection }) {
+  return (
+    <div className="bg-white rounded-xl shadow p-6 flex flex-col h-full w-full">
+      <h2 className="text-xl font-bold mb-4">실시간 감지</h2>
+
+      {detection ? (
+        <>
+          {/* 상단: 이미지 + 사용자 정보 */}
+          <div className="flex flex-row gap-6 items-start">
+            <img
+              src={`data:image/jpeg;base64,${detection.img}`}
+              alt="감지 이미지"
+              className="w-48 h-48 object-cover rounded-lg"
+            />
+            <div className="text-sm space-y-2 mt-1">
+              <p>
+                <strong className="inline-block w-20">사용자</strong>
+                <span className="font-semibold">{detection.user}</span>
+              </p>
+              <p>
+                <strong className="inline-block w-20">착용여부</strong>
+                <span
+                  className={`text-xs px-2 py-1 rounded-full text-white font-semibold ${
+                    detection.detected ? 'bg-green-500' : 'bg-red-500'
+                  }`}
+                >
+                  {detection.detected ? '착용' : '미착용'}
+                </span>
+              </p>
+              <p>
+                <strong className="inline-block w-20">탑승 시간</strong>
+                {new Date(detection.timestamp).toLocaleTimeString([], {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
+              </p>
+            </div>
+          </div>
+
+          {/* 구분선 */}
+          <hr className="my-5" />
+
+          {/* 하단 상세 정보 */}
+          <div className='grid place-items-center'>
+          <div className="text-sm space-y-2 leading-relaxed">
+            <p>
+              <strong className="inline-block w-20">기기 ID</strong>
+              {detection.vehicleid}
+            </p>
+            <p>
+              <strong className="inline-block w-20">배터리</strong>
+              {detection.battery}%
+            </p>
+            <p>
+              <strong className="inline-block w-20">위치 정보</strong>
+              위도 {detection.latitude}, 경도 {detection.longitude}
+            </p>
+            <p>
+              <strong className="inline-block w-20">도시명</strong>
+              {detection.cityname}
+            </p>
+            <p>
+              <strong className="inline-block w-20">제공자</strong>
+              {detection.providername}
+            </p>
+          </div>
+          </div>
+        </>
+      ) : (
+        <p>데이터 없음</p>
+      )}
+    </div>
+  );
+}
+
+export default RealTimeDetection;
