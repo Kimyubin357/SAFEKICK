@@ -27,10 +27,12 @@ function App() {
       <h1 className="text-3xl font-bold mb-6">SAFE KICK</h1>
 
       <div className="grid grid-cols-3 gap-4 flex-1 h-0">
-        <DetectionList helmetLogs={helmetLogs} />
-
+       
+          {/* 왼쪽: 장치 목록 */}
+          <DetectionList helmetLogs={helmetLogs} />
+      
         {/* 가운데: 실시간 감지 */}
-        <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center">
+        <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center h-full">
           <h2 className="text-xl font-semibold mb-4">실시간 감지</h2>
           {selectedDetection ? (
             <>
@@ -48,8 +50,11 @@ function App() {
           ) : <p>데이터 없음</p>}
         </div>
 
-        {/* 오른쪽: 지도 */}
-        <PMMap pmList={pmList} />
+     
+          {/* 오른쪽: 지도 */}
+          <PMMap pmList={pmList} />
+      
+        
         
       </div>
     </div>
