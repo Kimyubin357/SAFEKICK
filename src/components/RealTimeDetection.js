@@ -8,7 +8,7 @@ function RealTimeDetection({ detection }) {
       {detection ? (
         <>
           {/* 상단: 이미지 + 사용자 정보 */}
-          <div className="flex flex-row gap-6 items-start">
+          <div className="flex-1 flex flex-row gap-6 items-center justify-center">
             <img
               src={`data:image/jpeg;base64,${detection.img}`}
               alt="감지 이미지"
@@ -39,11 +39,11 @@ function RealTimeDetection({ detection }) {
             </div>
           </div>
 
-          {/* 구분선 */}
-          <hr className="my-5" />
+          {/* 구분선: 프레임 가운데에 위치 */}
+          <hr className=" top-1/2 left-0 w-full border-t border-gray-300 z-0" />
 
           {/* 하단 상세 정보 */}
-          <div className='grid place-items-center'>
+          <div className='flex-1 flex items-center justify-center'>
           <div className="text-sm space-y-2 leading-relaxed">
             <p>
               <strong className="inline-block w-20">기기 ID</strong>

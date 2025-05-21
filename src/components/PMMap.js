@@ -28,14 +28,14 @@ function PMMap({ pmList, selectedPM, onSelectPM, helmetLogs }) {
   }, [selectedPM]);
 
   return (
-    <div className="w-full bg-white p-4 rounded-lg shadow flex flex-col overflow-auto relative">
+    <div className="flex-1 flex flex-col bg-white p-4 rounded-lg shadow overflow-hidden">
       <h2 className="text-xl font-bold mb-4">🛴 공유 킥보드 지도</h2>
 
-      <div className="relative" style={{ height: '400px', borderRadius: '12px', overflow: 'hidden' }}>
+      <div className="relative flex-1 rounded-xl overflow-hidden" >
         <Map
           center={mapCenter} // 유지되는 center
           style={{ width: '100%', height: '100%' }}
-          level={5}
+          level={3}
           onClick={() => onSelectPM(null)}
           ref={mapRef}
         >
@@ -96,11 +96,11 @@ function PMMap({ pmList, selectedPM, onSelectPM, helmetLogs }) {
             className={`absolute bottom-0 left-0 w-full rounded-lg border-gray-300 bg-white shadow-lg border-t transition-transform duration-300 z-[999] ${
               selectedPM ? 'translate-y-0' : 'translate-y-full'
             }`}
-            style={{ height: '180px' }}
+            style={{ height: '40%', }}
             onClick={(e) => e.stopPropagation()}
           >
             {selectedPM && (
-              <div className="p-4 text-sm leading-6">
+              <div className="p-4 text-lg leading-6">
                 <div><strong>기기 ID:</strong> {selectedPM.vehicleid}</div>
                 <div><strong>배터리:</strong> {selectedPM.battery}%</div>
                 <div><strong>위치:</strong> 위도 {selectedPM.latitude}, 경도 {selectedPM.longitude}</div>

@@ -57,7 +57,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col p-7">
+    <div className="h-screen bg-gray-100 flex flex-col p-7 overflow-hidden">
       <h1 className="text-3xl font-bold mb-6">SAFE KICK</h1>
 
       <div className="grid grid-cols-3 gap-4 flex-1 h-0">

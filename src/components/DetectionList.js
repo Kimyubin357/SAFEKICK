@@ -42,7 +42,7 @@ function DetectionList({ helmetLogs, onSelect }) {
               </div>
 
               {/* 착용 여부 */}
-              <div>
+              <div className='p-4 flex justify-center'>
                 <span
                   className={`text-xs px-2 py-1 rounded-full text-white ${
                     item.detected ? 'bg-green-500' : 'bg-red-500'
