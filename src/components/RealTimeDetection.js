@@ -1,6 +1,21 @@
 import React from 'react';
 
 function RealTimeDetection({ detection }) {
+  const handleLiveStreaming = async () => {
+  try {
+    const res = await fetch('http://localhost:5000/live', {
+      method: 'POST',
+    });
+
+    const data = await res.json();
+    if (data.status) {
+      alert('✅ camera.py 실행 요청이 전송되었습니다!');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('❌ 실행 실패: 서버와 통신할 수 없습니다.');
+  }
+};
   return (
     <div className="bg-white rounded-xl shadow p-6 flex flex-col h-full w-full">
       <h2 className="text-xl font-bold mb-4">실시간 감지</h2>
@@ -28,6 +43,7 @@ function RealTimeDetection({ detection }) {
                 >
                   {detection.detected ? '착용' : '미착용'}
                 </span>
+                
               </p>
               <p>
                 <strong className="inline-block w-20">탑승 시간</strong>
@@ -36,6 +52,9 @@ function RealTimeDetection({ detection }) {
                   minute: '2-digit',
                 })}
               </p>
+              <button
+              onClick={handleLiveStreaming} 
+              className='font-xs px-2 py-1 rounded-full bg-black text-white font-semibold'>Live Streaming</button>
             </div>
           </div>
 
